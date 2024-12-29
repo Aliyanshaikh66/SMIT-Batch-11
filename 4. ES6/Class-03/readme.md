@@ -135,12 +135,12 @@ for (const num of evenNumbers(6)) {
 
 ### Example 1:
  
-// file1.js
+<!-- // file1.js
 export const greet = () => "Hello!";
 
 // file2.js
 import { greet } from './file1.js';
-console.log(greet()); // Output: Hello!
+console.log(greet()); // Output: Hello! -->
   
 
 ### Example 2:
@@ -219,7 +219,7 @@ console.log(evens); // Output: [2, 4]
 ### reduce()
  
 const numbers = [1, 2, 3, 4];
-const sum = numbers.reduce((acc, n) => acc + n, 0);
+const sum = numbers.reduce((acc, n) => acc + n, 1);
 console.log(sum); // Output: 10
   
 
@@ -232,7 +232,7 @@ nums.forEach(num => console.log(num * 2));
 
 ### find()
  
-const numbers = [10, 20, 30];
+const numbers = [10, 16, 30];
 const found = numbers.find(num => num > 15);
 console.log(found); // Output: 20
   
@@ -240,7 +240,7 @@ console.log(found); // Output: 20
 ### some()
  
 const numbers = [1, 2, 3];
-console.log(numbers.some(n => n > 2)); // Output: true
+console.log(numbers.some(n => n > 3)); // Output: true
   
 
 ### every()

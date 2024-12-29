@@ -125,6 +125,9 @@ The **exponentiation operator** (`**`) is used to raise a number to the power of
 
 ---
 
+### NEXT CLASS TOPIC
+
+
 ## Classes
 
 **Classes** are templates for creating objects. They encapsulate data and methods.
