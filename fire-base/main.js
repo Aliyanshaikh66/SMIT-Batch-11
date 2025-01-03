@@ -9,7 +9,7 @@
 // signInWithEmailAndPassword
 
 // const firebaseConfig = {
-//   apiKey: "AIzaSyAw9urXz-gRRtMDsSp-KYeOR422w53Vaws",
+//   apiKey: "api",
 //   authDomain: "smit-de250.firebaseapp.com",
 //   projectId: "smit-de250",
 //   storageBucket: "smit-de250.firebasestorage.app",
