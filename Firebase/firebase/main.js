@@ -1,6 +1,5 @@
- // Import the functions you need from the SDKs you need
+
  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
-//  import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
  import { getAuth, 
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
@@ -8,7 +7,7 @@
  } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
  
  const firebaseConfig = {
-   apiKey: "AIzaSyCXkzmMgdUp0llylzHI7zNWNP4Sp8cAygk",
+   apiKey: "your api key",
    authDomain: "test-app-328c1.firebaseapp.com",
    projectId: "test-app-328c1",
    storageBucket: "test-app-328c1.firebasestorage.app",

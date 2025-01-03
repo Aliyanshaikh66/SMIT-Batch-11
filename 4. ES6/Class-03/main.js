@@ -57,8 +57,6 @@
 // console.log(double(5)); // Output: 10
 // console.log(double(2));
   
-
-  
 // setTimeout(() => {
 //     function greet(name, callback) {
 //         console.log(`Hello, ${name}!`);
@@ -77,8 +75,20 @@
 //     .then(result => console.log(result))
 //     .catch(error => console.error(error));
 
-const asyncTask = value => new Promise(resolve => resolve(value + 10));
-asyncTask(5)
-       .then(result => result * 2)
-       .then(final => console.log(final)); // Output: 30
+// const asyncTask = value => new Promise(resolve => resolve(value + 10));
+// asyncTask(5)
+//        .then(result => result * 2)
+//        .then(final => console.log(final)); // Output: 30
+     
+// const user = {
+//   profile: {
+//       name: "Aliyan",
+//   },
+// };
+
+// console.log(user.profile?.name); // Output: Aliyan
+// console.log(user.address.age); // Output: undefined
+
+// const users = [{ name: "Aliyan" }, null];
+// console.log(users[0]?.name); // Output: undefined
      
