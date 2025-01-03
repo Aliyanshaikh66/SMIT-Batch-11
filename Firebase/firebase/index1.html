@@ -1,0 +1,65 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            width: 200px;
+        }
+        button {
+            padding: 10px;
+            margin: 10px;
+        }
+        .weather-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <input type="text" id="city" placeholder="Enter city name">
+    <input type="text" id="city" placeholder="Enter city name">
+    <input type="text" id="city" placeholder="Enter city name">
+    <input type="text" id="city" placeholder="Enter city name">
+    <button onclick="getWeather()">Get Weather</button>
+    <div class="weather-info" id="weather-info"></div>
+    
+    <script>
+        function getWeather() {
+            var city = document.getElementById('city').value;
+            var APIKey = 'api key';
+            var url= 'https://api.openweathermap.org/data/2.5/weather?lat=44.34&lon=10.99&appid={API key}'; // Replace with your OpenWeatherMap API key
+            
+            fetch(url)
+                .then(function(response) {
+                    if (response.ok) {
+                        return response.json();
+                    } else {
+                        throw new Error('City not found');
+                    }
+                })
+                .then(function(data) {
+                    var weatherInfo = document.getElementById('weather-info');
+                    weatherInfo.innerHTML = '<h2>Weather in ' + data.name + '</h2>' +
+                                            '<p>Temperature: ' + data.main.temp + '°C</p>' +
+                                            '<p>Weather: ' + data.weather[0].description + '</p>' +
+                                            '<p>Humidity: ' + data.main.humidity + '%</p>' +
+                                            '<p>Wind Speed: ' + data.wind.speed + ' m/s</p>';
+                })
+                .catch(function(error) {
+                    var weatherInfo = document.getElementById('weather-info');
+                    weatherInfo.innerHTML = '<p>' + error.message + '</p>';
+                });
+        }
+    </script>
+</body>
+</html> -->
