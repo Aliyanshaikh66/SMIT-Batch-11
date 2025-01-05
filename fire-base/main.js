@@ -1,4 +1,3 @@
-
 // import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 // import { getAuth, 
 //     createUserWithEmailAndPassword,
@@ -80,12 +79,12 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebas
 import { getAuth, 
     createUserWithEmailAndPassword,
     signInWithEmailAndPassword,
-    sendSignInLinkToEmail,
+    sendEmailVerification,
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "api key",
+  apiKey: "AIzaSyAw9urXz-gRRtMDsSp-KYeOR422w53Vaws",
   authDomain: "smit-de250.firebaseapp.com",
   projectId: "smit-de250",
   storageBucket: "smit-de250.firebasestorage.app",
@@ -109,6 +108,17 @@ registeres_btn.addEventListener("click", function () {
         // User created successfully
         const user = userCredential.user;
         console.log("User signed up:", user);
+        // add verification method to user
+
+        const auth = getAuth();
+    sendEmailVerification(auth.currentUser)
+    .then(() => {
+    // Email verification sent!
+    // ...
+    console.log("Email verified");
+    
+     });
+
     })
     .catch((error) => {
         const errorCode = error.code;
@@ -137,29 +147,29 @@ login_btn.addEventListener("click", function () {
 });
 
 // Email authentication: Send sign-in link
-let actionCodeSettings = {
-    // URL you want to redirect back to. The domain (www.example.com) for this
-    //  must be in the authorized domains list in the Firebase Console.
-    url: 'https://www.example.com/finishSignUp?cartId=1234',
-    handleCodeInApp: true,
-};
+// let actionCodeSettings = {
+//     // URL you want to redirect back to. The domain (www.example.com) for this
+//     //  must be in the authorized domains list in the Firebase Console.
+//     url: 'https://www.example.com/finishSignUp?cartId=1234',
+//     handleCodeInApp: true,
+// };
 
-let sendSignInLink_btn = document.getElementById("sendSignInLink_btn");
-sendSignInLink_btn.addEventListener("click", function () {
-    let email = document.getElementById("email").value;
+// let sendSignInLink_btn = document.getElementById("sendSignInLink_btn");
+// sendSignInLink_btn.addEventListener("click", function () {
+//     let email = document.getElementById("email").value;
 
-    sendSignInLinkToEmail(auth, email, actionCodeSettings)
-    .then(() => {
-        // The link was successfully sent. Inform the user and save the email in localStorage
-        window.localStorage.setItem('emailForSignIn', email);
-        console.log("Email link sent to", email);
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Error sending email link:", errorMessage);
-    });
-});
+//     sendSignInLinkToEmail(auth, email, actionCodeSettings)
+//     .then(() => {
+//         // The link was successfully sent. Inform the user and save the email in localStorage
+//         window.localStorage.setItem('emailForSignIn', email);
+//         console.log("Email link sent to", email);
+//     })
+//     .catch((error) => {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//         console.error("Error sending email link:", errorMessage);
+//     });
+// });
 
 
 

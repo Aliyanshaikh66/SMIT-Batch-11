@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+        }
+        div {
+            margin-bottom: 20px;
+        }
+        h2 {
+            margin-bottom: 10px;
+        }
+        input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            width: 100%;
+            max-width: 300px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .otp-box {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            margin: 5px;
+            font-size: 1.2em;
+        }
+        .otp-container {
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h2>Email Verification</h2>
+        <input type="text" placeholder="Email" id="emailForOtp">
+        <button id="sendOtpEmail_btn">Send OTP to Email</button>
+        <div class="otp-container">
+            <input type="text" maxlength="1" class="otp-box">
+            <input type="text" maxlength="1" class="otp-box">
+            <input type="text" maxlength="1" class="otp-box">
+            <input type="text" maxlength="1" class="otp-box">
+            <input type="text" maxlength="1" class="otp-box">
+            <input type="text" maxlength="1" class="otp-box">
+        </div>
+        <button id="verifyOtpEmail_btn">Verify OTP</button>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
