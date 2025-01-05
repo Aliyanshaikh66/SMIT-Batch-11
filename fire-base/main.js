@@ -78,16 +78,17 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, 
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
     sendEmailVerification,
+    GoogleAuthProvider,
+    getRedirectResult
 } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 
 // Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAw9urXz-gRRtMDsSp-KYeOR422w53Vaws",
+  apiKey: "your api",
   authDomain: "smit-de250.firebaseapp.com",
   projectId: "smit-de250",
-  storageBucket: "smit-de250.firebasestorage.app",
+  storageBucket: "smit-de250.appspot.com", // Correct storage bucket URL
   messagingSenderId: "795454057541",
   appId: "1:795454057541:web:97a07ae91361a3bebd872c",
   measurementId: "G-ZM0QWXTE63"
@@ -96,10 +97,11 @@ const firebaseConfig = {
 // Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const provider = new GoogleAuthProvider();
 
 // Register new user
-let registeres_btn = document.getElementById("registeres_btn");
-registeres_btn.addEventListener("click", function () {
+let register_btn = document.getElementById("registeres_btn"); // Verify this ID
+register_btn.addEventListener("click", function () {
     let email = document.getElementById("email").value;
     let password = document.getElementById("password").value;
 
@@ -108,43 +110,75 @@ registeres_btn.addEventListener("click", function () {
         // User created successfully
         const user = userCredential.user;
         console.log("User signed up:", user);
-        // add verification method to user
 
-        const auth = getAuth();
-    sendEmailVerification(auth.currentUser)
-    .then(() => {
-    // Email verification sent!
-    // ...
-    console.log("Email verified");
-    
-     });
-
+        // Send email verification
+        sendEmailVerification(auth.currentUser)
+        .then(() => {
+            console.log("Email verification sent!");
+        })
+        .catch((error) => {
+            console.error("Error sending email verification:", error.message);
+        });
     })
     .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Error signing up:", errorMessage);
+        console.error("Error signing up:", error.message);
     });
 });
+
+// Handle Google login redirection
+getRedirectResult(auth)
+  .then((result) => {
+    if (result) {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+      const user = result.user;
+      console.log("User info:", user);
+    }
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    const email = error.customData?.email;
+    const credential = GoogleAuthProvider.credentialFromError(error);
+    console.error("Error during Google login:", errorMessage);
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // Sign in existing user
-let login_btn = document.getElementById("login_btn");
-login_btn.addEventListener("click", function () {
-    let loginemail = document.getElementById("loginemail").value;
-    let loginpassword = document.getElementById("loginpassword").value;
+// let login_btn = document.getElementById("login_btn");
+// login_btn.addEventListener("click", function () {
+//     let loginemail = document.getElementById("loginemail").value;
+//     let loginpassword = document.getElementById("loginpassword").value;
 
-    signInWithEmailAndPassword(auth, loginemail, loginpassword)
-    .then((userCredential) => {
-        // User signed in successfully
-        const user = userCredential.user;
-        console.log("User signed in:", user);
-    })
-    .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.error("Error signing in:", errorMessage);
-    });
-});
+//     signInWithEmailAndPassword(auth, loginemail, loginpassword)
+//     .then((userCredential) => {
+//         // User signed in successfully
+//         const user = userCredential.user;
+//         console.log("User signed in:", user);
+//     })
+//     .catch((error) => {
+//         const errorCode = error.code;
+//         const errorMessage = error.message;
+//         console.error("Error signing in:", errorMessage);
+//     });
+// });
 
 // Email authentication: Send sign-in link
 // let actionCodeSettings = {
